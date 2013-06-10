@@ -355,6 +355,10 @@ function addMethod(app, callback, spec) {
 
   //  convert .{format} to .json, make path params happy
   var fullPath = spec.path.replace(formatString, jsonSuffix).replace(/\/{/g, "/:").replace(/\}/g,"");
+
+  // Hacky solution.
+  fullPath = '/v1' + fullPath;
+  
   var currentMethod = spec.method.toLowerCase();
   if (allowedMethods.indexOf(currentMethod)>-1) {
 		
